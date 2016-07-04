@@ -12,4 +12,7 @@ DEBIAN_FRONTEND=noninteractive apt install -y mariadb-server
 
 RUN /usr/bin/mysql_install_db --datadir=/opt/mysql/data
 
-ENTRYPOINT ["/usr/bin/mysqld"]
+ADD docker-entrypoint.sh /
+RUN chmod +x /docker-entrypoint.sh
+
+ENTRYPOINT ["/docker-entrypoint.sh"]
